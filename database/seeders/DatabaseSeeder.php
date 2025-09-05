@@ -18,26 +18,32 @@ class DatabaseSeeder extends Seeder
     {
         $categoriesWithProducts = [
             'iPhone' => [
-                'iPhone 17 Pro',
-                'iPhone 17',
-                'iPhone 16 Pro',
-                'iPhone 16',
-                'iPhone 16e',
+                'iPhone 16 Pro Max',
+                'iPhone 15',
+                'iPhone 14',
             ],
             'Accessories' => [
                 'AirPods Pro',
                 'MagSafe Charger',
                 'Apple Watch Series 10',
-                'Lightning Cable',
-                'iPhone 17 Case',
             ],
             'Macbook' => [
                 'MacBook Air M2',
                 'MacBook Air M3',
                 'MacBook Pro 14-inch',
-                'MacBook Pro 16-inch',
-                'Mac Studio Display',
             ],
+        ];
+
+        $imageFiles = [
+            'iPhone 16 Pro Max' => 'iphone16-promax.jpg',
+            'iPhone 15' => 'iphone15.jpg',
+            'iPhone 14' => 'iphone14.jpg',
+            'AirPods Pro' => 'airpods-pro.jpg',
+            'MagSafe Charger' => 'magsafe-charger.jpg',
+            'Apple Watch Series 10' => 'apple-watch-10.jpg',
+            'MacBook Air M2' => 'macbook-air-m2.jpg',
+            'MacBook Air M3' => 'macbook-air-m3.jpg',
+            'MacBook Pro 14-inch' => 'macbook-pro-14.jpg',
         ];
 
         foreach ($categoriesWithProducts as $categoryName => $products) {
@@ -56,7 +62,7 @@ class DatabaseSeeder extends Seeder
                     'description' => 'This is a description for '.$productName,
                     'price' => fake()->randomFloat(2, 200, 3000),
                     'stock_quantity' => fake()->numberBetween(10, 100),
-                    'image_url' => fake()->imageUrl(640, 480, 'products', true),
+                    'image_url' => asset('seed_images/' . $imageFiles[$productName]),
                 ]);
             }
         }
